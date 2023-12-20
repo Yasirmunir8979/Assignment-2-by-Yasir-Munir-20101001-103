@@ -1,0 +1,46 @@
+﻿@page "/studentform"
+@using Assignment.Model;
+
+<h3>Student Information</h3>
+
+@if (isFormSubmitted)
+{
+    <p>Form submitted successfully!</p>
+}
+else
+{
+    <form @onsubmit="SubmitForm">
+        <div class="form-group">
+            <label for="sid">Student ID:</label>
+            <input type="text" id="sid" @bind="student.sid" class="form-control" required>
+        </div>
+
+        <div class="form-group">
+            <label for="sname">Student Name:</label>
+            <input type="text" id="sname" @bind="student.sname" class="form-control" required>
+        </div>
+
+        <div class="form-group">
+            <label for="major">Major:</label>
+            <input type="text" id="major" @bind="student.major" class="form-control" required>
+        </div>
+
+        <div class="form-group">
+            <label for="standing">Standing:</label>
+            <input type="text" id="standing" @bind="student.standing" class="form-control" required>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+}
+
+@code {
+    private Student student = new Student();
+    private bool isFormSubmitted = false;
+
+    private void SubmitForm()
+    {
+      
+        isFormSubmitted = true;
+    }
+}
